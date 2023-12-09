@@ -16,10 +16,104 @@ class _ProductScreenState extends State<ProductScreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: scaffoldGray,
         body: SafeArea(
-          child: BannerSlider(),
+          child: Container(
+            width: 160.0,
+            height: 216.0,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            child: Stack(
+              alignment: AlignmentDirectional.bottomCenter,
+              children: [
+                Positioned(
+                  bottom: 0,
+                  child: Container(
+                    width: 160.0,
+                    height: 53.0,
+                    decoration: const BoxDecoration(
+                      color: azinBlue,
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(15.0),
+                        bottomRight: Radius.circular(15.0),
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
         ),
       ),
+    );
+  }
+
+  ListView CategoryHorizontaltemList() {
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      reverse: true,
+      itemCount: 16,
+      padding: const EdgeInsets.only(right: 44.0),
+      itemBuilder: (context, index) {
+        return const Padding(
+          padding: EdgeInsets.only(left: 20.0),
+          child: CategoryHorizontaltem(),
+        );
+      },
+    );
+  }
+}
+
+class CategoryHorizontaltem extends StatelessWidget {
+  const CategoryHorizontaltem({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Stack(
+          alignment: AlignmentDirectional.center,
+          children: [
+            Container(
+              height: 56.0,
+              width: 56.0,
+              decoration: const ShapeDecoration(
+                color: azinGreen,
+                shadows: [
+                  BoxShadow(
+                    color: azinGreen,
+                    offset: Offset(0.0, 10.0),
+                    blurRadius: 15.0,
+                    spreadRadius: -5.0,
+                  ),
+                ],
+                shape: ContinuousRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(40.0),
+                  ),
+                ),
+              ),
+            ),
+            const Icon(
+              Icons.computer_rounded,
+              color: Colors.white,
+              size: 26.0,
+            ),
+          ],
+        ),
+        const SizedBox(height: 10.0),
+        const Text(
+          'مک بوک',
+          style: TextStyle(
+            fontFamily: 'SM',
+            fontSize: 12.0,
+          ),
+        ),
+      ],
     );
   }
 }
