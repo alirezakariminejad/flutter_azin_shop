@@ -7,11 +7,13 @@ class BannerSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final PageController controller = PageController(viewportFraction: 0.8);
-    return Column(
+    return Stack(
+      alignment: AlignmentDirectional.bottomCenter,
       children: [
         SizedBox(
           height: 177.0,
           child: PageView.builder(
+            reverse: true,
             controller: controller,
             itemCount: 9,
             itemBuilder: (context, index) {
@@ -27,15 +29,18 @@ class BannerSlider extends StatelessWidget {
             },
           ),
         ),
-        SmoothPageIndicator(
-          controller: controller,
-          count: 3,
-          effect: const ExpandingDotsEffect(
-            dotColor: Colors.white,
-            activeDotColor: azinBlue,
-            dotHeight: 10.0,
-            dotWidth: 10.0,
-            spacing: 5.0,
+        Positioned(
+          bottom: 16.0,
+          child: SmoothPageIndicator(
+            controller: controller,
+            count: 3,
+            effect: const ExpandingDotsEffect(
+              dotColor: Colors.white,
+              activeDotColor: azinBlue,
+              dotHeight: 10.0,
+              dotWidth: 10.0,
+              spacing: 5.0,
+            ),
           ),
         )
       ],
